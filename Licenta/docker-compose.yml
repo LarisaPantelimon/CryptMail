@@ -1,0 +1,158 @@
+version: '3.8'
+services:
+  frontend:
+    build:
+      context: ./front-email
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - backend
+      - mobile-backend
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+    networks:
+      - app-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.backend
+    env_file:
+      - backend/.env
+    ports:
+      - "5000:5000"
+    depends_on:
+      - sqlserver
+      - sqlserver-init
+      - minio
+    networks:
+      - app-network
+
+  mobile-backend:
+    build:
+      context: ./back
+      dockerfile: Dockerfile.mobile-backend
+    env_file:
+      - back/.env
+    ports:
+      - "6000:6000"
+    depends_on:
+      - redis
+      - mobile-sqlserver
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+    networks:
+      - app-network
+
+  server:
+    build:
+      context: ./Server
+      dockerfile: Dockerfile.server
+    env_file:
+      - Server/.env
+    ports:
+      - "587:587"
+      - "993:993"
+    depends_on:
+      - minio
+    networks:
+      - app-network
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Pantelimon2002*
+      - MSSQL_PID=Express
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+    networks:
+      - app-network
+
+  sqlserver-init:
+    image: mcr.microsoft.com/mssql-tools
+    depends_on:
+      - sqlserver
+    volumes:
+      - ./backend/init.sql:/init.sql
+    entrypoint: >
+      /bin/bash -c "
+        echo 'Waiting for SQL Server to start...';
+        sleep 60;
+        /opt/mssql-tools/bin/sqlcmd -S sqlserver -U sa -P 'Pantelimon2002*' -i /init.sql
+      "
+    networks:
+      - app-network
+
+  mobile-sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Pantelimon2002*
+      - MSSQL_PID=Express
+    ports:
+      - "1434:1433"
+    volumes:
+      - mobile-sqlserver-data:/var/opt/mssql
+      # Ensure create-db.sql is mounted correctly. Assuming it's in the root of your project
+      - ./back/create-db.sql:/create-db.sql
+    networks:
+      - app-network
+
+  mobile-sqlserver-init:
+    image: mcr.microsoft.com/mssql-tools
+    depends_on:
+      - mobile-sqlserver
+    volumes:
+      # Mount both init scripts. Assuming they are in the root of your project
+      - ./back/create-db.sql:/create-db.sql
+      - ./back/init-mobile-tables.sql:/init-mobile-tables.sql
+    user: "0"
+    entrypoint: >
+      /bin/bash -c "
+        echo 'Waiting for Mobile SQL Server to start...';
+        sleep 60;
+        # First, create the database
+        /opt/mssql-tools/bin/sqlcmd -S mobile-sqlserver -U sa -P 'Pantelimon2002*' -i /create-db.sql && \
+        echo 'Database EMAIL_MOBILE created. Now creating tables...';
+        # Then, create the tables within the database
+        /opt/mssql-tools/bin/sqlcmd -S mobile-sqlserver -U sa -P 'Pantelimon2002*' -i /init-mobile-tables.sql
+      "
+    networks:
+      - app-network
+
+  minio:
+    image: minio/minio:latest
+    environment:
+      - MINIO_ROOT_USER=minioadmin
+      - MINIO_ROOT_PASSWORD=minioadmin
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio-data:/data
+    command: server /data --console-address ":9001"
+    networks:
+      - app-network
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    networks:
+      - app-network
+
+volumes:
+  sqlserver-data:
+  mobile-sqlserver-data:
+  minio-data:
+
+networks:
+  app-network:
+    driver: bridge

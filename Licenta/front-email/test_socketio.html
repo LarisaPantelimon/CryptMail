@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket Test</title>
+    </head>
+<body>
+    <h1>Raw WebSocket Test Client</h1>
+    <p id="status">Connecting...</p>
+    <textarea id="messages" rows="10" cols="50" readonly></textarea>
+    <input type="text" id="input" placeholder="Type a message">
+    <button id="send">Send</button>
+
+    <script>
+        const statusElement = document.getElementById('status');
+        const messagesElement = document.getElementById('messages');
+        const inputElement = document.getElementById('input');
+        const sendButton = document.getElementById('send');
+
+        // Connect directly to the WebSocket endpoint
+        const ws = new WebSocket("wss://cryptmail.stud.fsisc.ro/"); // Connect to the root
+
+        ws.onopen = () => {
+            statusElement.innerText = "Connected!";
+            messagesElement.value += "Connected to WebSocket server.\n";
+            console.log("WebSocket connection opened.");
+        };
+
+        ws.onmessage = (event) => {
+            messagesElement.value += `Received: ${event.data}\n`;
+            console.log("Received:", event.data);
+        };
+
+        ws.onerror = (error) => {
+            statusElement.innerText = "Error: " + error.message;
+            messagesElement.value += `Error: ${error.message}\n`;
+            console.error("WebSocket error:", error);
+        };
+
+        ws.onclose = (event) => {
+            statusElement.innerText = `Disconnected: Code ${event.code}, Reason: ${event.reason}`;
+            messagesElement.value += `Disconnected: Code ${event.code}, Reason: ${event.reason}\n`;
+            console.log("WebSocket disconnected:", event);
+        };
+
+        sendButton.onclick = () => {
+            const message = inputElement.value;
+            if (ws.readyState === WebSocket.OPEN) {
+                ws.send(message);
+                messagesElement.value += `Sent: ${message}\n`;
+                inputElement.value = '';
+            } else {
+                messagesElement.value += "Cannot send, WebSocket not open.\n";
+            }
+        };
+    </script>
+</body>
+</html>

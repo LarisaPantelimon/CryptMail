@@ -1,0 +1,384 @@
+.MyRecoverPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px; /* Adds space between the two sections */
+    min-height: 100vh; /* Ensures they are centered vertically */
+    background-image: none;
+}
+
+.PasswordModal2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Add this to ensure it’s above other content */
+    backdrop-filter: blur(5px); /* Optional: matches .modal for consistency */
+}
+
+/* Ensure the modal content stays within the same stacking context */
+.PasswordModal2 .modal-buttons2 button {
+    padding: 10px 15px;
+    background-color: #0d0686;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.PasswordModal2 .modal-buttons2 button:hover {
+    background-color: #080455;
+}
+
+.EmailResetPassword {
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    padding: 20px;
+    min-height: 35vh;
+    width: 44%;
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+    margin-left:70px;
+}
+.RecoverYourEmails{
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    padding: 20px;
+    min-height: 35vh;
+    width: 44%;
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+    margin-left: 70px;
+}
+
+.uploadButton {
+    margin-top:20px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0d0686;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .uploadButton:hover {
+    background-color: #3a4a8b;
+  }
+.RecoverYourEmails:hover{
+    transform: scale(1.02);
+}
+.EmailResetPassword:hover {
+    transform: scale(1.02);
+}
+
+.InsideEmailRec {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    gap: 10px;
+}
+
+.textrec {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #333;
+}
+
+.inputContainer {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.inputContainer i {
+    position: absolute;
+    left: 10px;
+    color: #969393;
+    font-size: 16px;
+}
+
+.inputEmail {
+    width: 55%;
+    padding: 10px 10px 10px 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+.EditButton {
+    background-color:#0d0686;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.EditButton:hover {
+    background-color: #3a4a8b;
+}
+
+.verificationSection {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.verifyMessage {
+    font-size: 14px;
+}
+
+.success {
+    color: #28a745;
+}
+
+.error {
+    color: #dc3545;
+}
+
+.VerifyLink {
+    background: #0d0686;
+    border: none;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: underline;
+    margin-left: 5px;
+}
+
+.VerifyLink:hover {
+    color: #09045e;
+}
+
+.SaveButton {
+    margin-top: 15px;
+    width: 70px;
+    padding: 8px 12px;
+    background-color:#0d0686;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.SaveButton:hover {
+    background-color: #3a4a8b;
+}
+
+.SaveButton.disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Modal Styling */
+.modal-verification {
+    position: relative;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    z-index: 1000; 
+    /* Add this to ensure it’s above other content */
+    backdrop-filter: blur(5px);}
+
+.modal-content-verification {
+    background: #fff;
+    padding: 20px;
+    width: 350px;
+    border: none;
+    text-align: center;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-buttons-verification {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.modalbuttonsver {
+    flex: 1;
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    background: #0d0686;
+    color: white;
+}
+
+.modalbuttonsver :hover {
+    background: #090564;
+}
+
+.DataRecovery {
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+    padding: 20px;
+    min-height: 35vh;
+    width: 44%;
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+    margin-left:70px;
+}
+
+.DataRecovery:hover {
+    transform: scale(1.02);
+}
+
+.recoveryText {
+    font-size: 1rem;
+    color: #333;
+    margin: 10px 0 20px;
+    max-width: 90%;
+}
+.recoveryText2 {
+    font-size: 1rem;
+    color: #c10a0a;
+    margin: 10px 0 20px;
+    max-width: 90%;
+}
+
+.RecoveryFileButton {
+    width: 60%;
+    padding: 10px 15px;
+    background-color: #0d0686;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+.RecoveryFileButton:disabled{
+    background-color: #606b76; /* Gray background for loading */
+    color: #e0e0e0; /* Lighter text color */
+    cursor: not-allowed;
+    opacity: 0.7;
+    /* Optional: Add a pulsing animation for visual feedback */
+    animation: pulse 1.5s infinite ease-in-out;
+}
+.modal-content button {
+    flex: 1;
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #0d0686; /* Match your theme */
+    color: white;
+    transition: background-color 0.3s ease-in-out;
+}
+.applybuttonpasswordmodel2{
+    padding: 10px 15px;
+    background-color: #0d0686;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+.bruh{
+    padding: 10px 15px;
+    background-color: #0d0686;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.RecoveryFileButton:hover, .cevabutondeaplicat:hover {
+    background-color: #0d0686;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 768px) {
+    .EmailResetPassword {
+        width: 80%;
+    }
+    .RecoverYourEmails{
+        width: 80%;
+    }
+
+    .inputEmail {
+        width: 60%;
+    }
+    .DataRecovery{
+        width: 80%;
+    }
+
+    .SaveButton {
+        width: 80px;
+    }
+}
+@media (max-width: 450px) {
+    .EmailResetPassword {
+        width: 80%;
+        margin-left: 1px;
+    }
+    .RecoverYourEmails{
+        width: 80%;
+        margin-left: 1px;
+    }
+
+    .inputEmail {
+        width: 60%;
+    }
+    .DataRecovery{
+        width: 80%;
+        margin-left: 1px;
+    }
+
+    .SaveButton {
+        width: 80px;
+    }
+}

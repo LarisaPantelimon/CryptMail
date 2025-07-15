@@ -1,0 +1,268 @@
+.MyLoginPage {
+    background-image: url("../ImgSrc/poza.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Default to column for mobile */
+    align-items: center;
+    justify-content: center;
+    padding: 0 5%;
+    gap: 20px; /* Positive gap for spacing between elements */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+.MyLoginPage > *:first-child {
+    transform: translateX(0);
+}
+
+.LogoPart {
+    background-color: #0d0686;
+    border-radius: 10px;
+    height: auto; /* Dynamic height for mobile */
+    width: 90%;
+    max-width: 450px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.5rem; /* Reduced padding for mobile */
+    position: relative;
+}
+
+.registerButton {
+    width: 50%;
+    max-width: 150px;
+    padding: 0.75rem;
+    border: none;
+    background-color: white;
+    color: #0d0686;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    align-self: center;
+    text-align: center;
+}
+
+.registerButton a {
+    text-decoration: none;
+    color: #0d0686;
+    font-weight: bold;
+}
+
+.registerButton:hover {
+    background-color: #d7d5f2;
+    color: rgb(63, 36, 171);
+}
+
+.MyLoginCredentials {
+    width: 90%;
+    max-width: 300px;
+    border-radius: 10px;
+    min-height: 0; /* Allow height to adjust to content */
+    display: flex;
+    flex-direction: column;
+    z-index: 200;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    background-color: white;
+    padding: 1.5rem; /* Reduced padding for mobile */
+    position: relative;
+}
+
+.linkforgot {
+    color: #0d0686;
+    font-weight: bold;
+    text-decoration: underline;
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    font-size: 14px;
+    padding: 0;
+}
+
+.linkforgot:hover {
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.imagelogo {
+    width: 70%;
+    max-width: 300px;
+    align-self: center;
+    margin-top: 1rem;
+}
+
+.connect {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: -30px; /* Remove negative margin */
+}
+
+.input1 {
+    width: 100%;
+    padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 3rem;
+    box-sizing: border-box;
+}
+
+.ImageEmail, .ImagePassword {
+    position: relative;
+    width: 100%;
+}
+
+.SignInLogIn {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: #0d0686;
+    text-align: center;
+    margin-bottom: 1.5rem; /* Reduced margin */
+    animation: fadeIn 1s ease-out;
+}
+
+.ImageEmail i, .ImagePassword i {
+    position: absolute;
+    left: 10px;
+    top: 40%;
+    transform: translateY(-50%);
+    color: #969393;
+    z-index: 1;
+}
+
+.submitbutton {
+    width: 50%;
+    padding: 0.75rem;
+    border: none;
+    background-color: #0d0686;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+    font-weight: bold;
+    align-self: center;
+}
+
+.additionalinfo {
+    text-align: center;
+    /* margin-top: 0.25rem; Reduced from 0.5rem to move text higher */
+}
+
+/* Media Queries for Responsiveness */
+@media (min-width: 1024px) {
+    .MyLoginPage {
+        flex-direction: row; /* Revert to row for desktop */
+        gap: -10rem; /* Restore original negative gap */
+    }
+
+    .LogoPart {
+        background-color: #0d0686;
+        border-radius: 10px;
+        height: 85vh;
+        max-height: 400px;
+        width: 40%;
+        max-width: 450px;
+        left: -5%; /* Restore original positioning */
+        z-index: 10;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 1);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 2rem;
+        position: relative;
+    }
+
+    .MyLoginCredentials {
+        width: 35%;
+        max-width: 300px;
+        border-radius: 10px;
+        height: 280px; /* Restore original fixed height */
+        display: flex;
+        flex-direction: column;
+        z-index: 200;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 1);
+        background-color: white;
+        padding: 2rem;
+        position: relative;
+        transform: translateX(-1.5rem); /* Restore original shift */
+    }
+
+    .additionalinfo {
+        margin-top: 0.25rem; /* Reduced from original 0.5rem to move text higher */
+    }
+}
+
+@media (max-width: 768px) {
+    .LogoPart {
+        width: 90%;
+        height: auto;
+        padding: 1rem;
+    }
+
+    .MyLoginCredentials {
+        width: 90%;
+        padding: 1rem;
+    }
+
+    .submitbutton {
+        width: 60%;
+    }
+
+    .registerButton {
+        width: 60%;
+    }
+
+    .imagelogo {
+        width: 50%;
+    }
+}
+
+@media (max-width: 480px) {
+    .LogoPart {
+        width: 100%;
+        height: auto;
+        padding: 1rem;
+    }
+
+    .MyLoginCredentials {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .input1 {
+        padding: 0.5rem 0.5rem 0.5rem 2rem;
+        height: 2.5rem;
+    }
+    .connect {
+        width: 100%;
+        margin-top: -10px; /* Adjusted for smaller screens */
+    }
+
+    .SignInLogIn {
+        font-size: 1.5rem;
+        /* margin-bottom: 1rem; */
+        /* margin-top:-10px; */
+    }
+
+    .submitbutton {
+        width: 70%;
+    }
+
+    .registerButton {
+        width: 70%;
+    }
+
+    .imagelogo {
+        width: 40%;
+    }
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

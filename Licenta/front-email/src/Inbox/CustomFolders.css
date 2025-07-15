@@ -1,0 +1,131 @@
+.custom-folders {
+    margin-top: 10px;
+  }
+  
+  .custom-folders-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    font-size: 14px;
+    color: #fcfcfc;
+  }
+  
+  .add-folder-button {
+    background: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 5px;
+    width: 40px;
+    margin-bottom:10px;
+  }
+  
+  .add-folder-button:hover {
+    color: #0d0686;
+    background-color: white;
+  }
+  
+  .custom-folders-list {
+    list-style: none;
+    padding: 0;
+    margin: 5px 0;
+  }
+  
+  .custom-folder-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .custom-folder-item:hover {
+    background-color: #ffffff;
+  }
+  
+  .custom-folder-item.active {
+    background-color: #b8a3ff53;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .custom-folder-item .icon {
+    margin-right: 10px;
+    width: 16px;
+  }
+  
+  .folder-text {
+    flex-grow: 1;
+  }
+  
+  .delete-folder-button {
+    background: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 5px;
+    display: none;
+    width: 40px;
+    margin-bottom:10px;
+  }
+  
+  .custom-folder-item:hover .delete-folder-button {
+    display: inline-block;
+  }
+  
+  .delete-folder-button:hover {
+    color: #ff0000;
+  }
+  
+  .add-folder-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    width: 300px;
+    text-align: center;
+  }
+  
+  .close-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .folder-input {
+    width: 95%;
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .add-folder-submit {
+    background: #0d0686;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .add-folder-submit:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }

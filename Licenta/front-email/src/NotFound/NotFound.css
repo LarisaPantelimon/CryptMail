@@ -1,0 +1,25 @@
+.not-found-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f2f5;
+  }
+  
+  .not-found-page h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .not-found-page p {
+    margin-bottom: 1.5rem;
+  }
+  
+  .home-link {
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+  }

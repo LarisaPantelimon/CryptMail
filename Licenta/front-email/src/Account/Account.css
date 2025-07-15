@@ -1,0 +1,490 @@
+/* General Styles */
+/* body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7fb;
+    color: #333;
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+} */
+
+/* User profile container */
+.user-profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7fb;
+    color: #333;
+    scroll-behavior: smooth;
+    min-height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+/* Sidebar Toggle Button */
+.account-sidebar-toggle {
+    position: fixed;
+    top: 10px; 
+    left: 20px; 
+    /* margin-left:-250px; */
+    
+    background: linear-gradient(135deg, #0d0686, #1a1ab6);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 1001;
+    transition: background 0.3s, transform 0.2s;
+    width: 40px;
+}
+
+.account-sidebar-toggle:hover {
+    background: #3a4789;
+    transform: scale(1.05);
+}
+
+/* .account-sidebar-toggle.active {
+    left: 270px; /* Adjust position when sidebar is open */
+/* }  */
+
+
+/* Sidebar */
+.account-sidebar {
+    width: 250px;
+    background: #0d0686;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: -250px;
+    height: 100%;
+    transition: left 0.3s ease;
+    z-index: 1000;
+}
+
+.account-sidebar.open {
+    left: 0;
+}
+
+.account-sidebar-header {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.account-sidebar-logo img {
+    max-width: 150px;
+    height: auto;
+}
+
+.account-sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.account-sidebar-menu li {
+    margin: 15px 0;
+}
+
+.account-sidebar-button {
+    display: flex;
+    align-items: center;
+    width: 93%;
+    padding: 12px 20px;
+    background: transparent;
+    color: white;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.account-sidebar-button:hover {
+    background: #3a4789;
+}
+
+.account-sidebar-button.active {
+    background: white;
+    color: #1a2a44;
+    border-radius: 8px;
+    margin: 0 10px;
+}
+
+.account-sidebar-button.active .account-sidebar-icon,
+.account-sidebar-button.active .account-sidebar-text {
+    color: #1a2a44;
+}
+
+.account-sidebar-icon {
+    margin-right: 15px;
+    font-size: 18px;
+    color: white;
+}
+
+.account-sidebar-text {
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+}
+
+/* Profile container layout */
+.warning-2fa {
+    margin-left: 130px;
+    width: 50%;
+}
+
+.profile-container {
+    align-items: start;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 60%;
+    margin-left: 70px;
+    transition: margin-left 0.3s ease;
+}
+
+.profile-container.sidebar-open {
+    margin-left: 250px;
+}
+
+.column2 {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.mylabel{
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #0d0686;
+}
+
+/* Profile card */
+.profile-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 55%;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* Password card */
+.password-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 350px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* Two-factor container */
+.twofactor-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 12px;
+    width: 870px;
+    margin-top: 20px;
+    margin-left: 70px;
+    transition: margin-left 0.3s ease;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.twofactor-container.sidebar-open {
+    margin-left: 250px;
+}
+
+/* Key card */
+.key-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+    width: 350px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+h2 {
+    text-align: center;
+}
+
+/* Input fields */
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 95%;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Button styles */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #0d0686;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #514ca5;
+    transform: scale(1.05);
+}
+
+.match {
+    border: 2px solid green;
+    background-color: #8ef196; /* Light green */
+}
+
+.no-match {
+    border: 2px solid red;
+    background-color: #f58c9c; /* Light red */
+}
+
+/* Modals */
+.PasswordModal {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    position: relative;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.passwordmodalinput {
+    padding: 10px;
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.applybuttonpasswordmodel {
+    background-color: #0d0686;
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    align-self: flex-end;
+}
+
+.close-modal-password {
+    position: absolute;
+    top: 7px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #f50000;
+}
+
+/* Two-factor toggle */
+.icon-toggle {
+    border: none;
+    background-color: #0d0686;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-left: 50px;
+}
+
+.twofactor-content {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.icon-toggle:hover {
+    background-color: #3a4789;
+    color: white;
+    transform: scale(1.1);
+}
+
+.icon-toggle.enabled {
+    background-color: #3a4789;
+    color: white;
+}
+
+/* Tooltip */
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+    margin-left: 8px;
+    margin-top: 17px;
+}
+
+.info-icon {
+    color: #3a4789;
+    cursor: pointer;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    padding: 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+.custom-toast-container .Toastify__close-button {
+    opacity: 0; /* Make it fully transparent */
+    pointer-events: none; /* Prevent clicking */
+}
+.key-card button:disabled {
+  /* Loading state styles */
+  background-color: #606b76; /* Gray background for loading */
+  color: #e0e0e0; /* Lighter text color */
+  cursor: not-allowed;
+  opacity: 0.7;
+  /* Optional: Add a pulsing animation for visual feedback */
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .account-sidebar {
+        width: 250px;
+        left: -250px;
+    }
+
+    .account-sidebar.open {
+        left: 0;
+    }
+
+    /* .account-sidebar-toggle.active {
+        left: 220px;
+    } */
+
+    .profile-container {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .profile-container.sidebar-open {
+        margin-left: 0;
+    }
+
+    .profile-card,
+    .password-card,
+    .key-card,
+    .twofactor-container {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .column2 {
+        margin-left: 0;
+        width: 100%;
+        align-items: center;
+    }
+
+    .warning-2fa {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .twofactor-container.sidebar-open {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .user-profile {
+        padding: 10px;
+    }
+
+    .profile-container {
+        gap: 15px;
+        width: 80%;
+        margin-left: 5px;
+    }
+
+    .twofactor-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .info-icon{
+        align-self: center;
+    }
+
+    .account-sidebar-toggle {
+        top: 10px;
+        left: 10px;
+        padding: 8px;
+    }
+    .twofactor-container{
+        width: 88%;
+        margin-left: 5px;
+    }
+}

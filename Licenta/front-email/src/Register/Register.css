@@ -1,0 +1,273 @@
+/* Page-specific background with solid color */
+.register-page {
+  background: #f7f7f7;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Container for the entire form */
+.register-container {
+  width: 50%;
+  max-width: 600px;
+  padding: 30px;
+  border: none;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  margin-right: 20px;
+  margin-left: 150px;
+}
+
+/* Logo container */
+.logo-container {
+  width: 50%;
+  max-width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-image {
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+/* Title styling */
+.register-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Form layout */
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+}
+
+/* Row layout for input groups */
+.row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 15px;
+}
+
+/* Input group styling */
+.input-group {
+  flex: 1;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-right: 20px;
+}
+
+.input-group-gender {
+  flex: 1;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-right: 20px;
+  margin-top: 20px;
+}
+
+.input-group label,
+.input-group-gender label {
+  font-weight: 600;
+  font-size: 12px;
+  color: #555;
+  text-transform: uppercase;
+}
+
+/* Input and select styling */
+.input-group input,
+.input-group select,
+.input-group-gender select {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  background-color: #f0f4ff;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group-gender select:focus {
+  background-color: #e6ecff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(13, 6, 134, 0.3);
+}
+
+/* Error state for inputs */
+.input-group input.error,
+.input-group select.error,
+.input-group-gender select.error {
+  border: 1px solid #e74c3c;
+}
+
+/* Placeholder text for birthday input */
+.input-group input[type="date"] {
+  color: #999;
+}
+
+/* Checkbox group styling */
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  width: 100%;
+  font-size: 16px;
+  color: #666;
+}
+
+.checkbox-group input {
+  margin-right: 10px;
+  width: 20px;
+}
+
+/* Error message styling */
+.error-message {
+  color: #e74c3c;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Register button styling */
+.register-button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  background-color: #0d0686;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, opacity 0.3s;
+  margin-top: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.register-button:hover:not(:disabled) {
+  background-color: #0a045f;
+}
+
+.register-button:disabled {
+  background-color: #666;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Loading spinner */
+.spinner {
+  border: 3px solid #ffffff;
+  border-top: 3px solid #0d0686;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+  margin-right: 10px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* QR modal styling */
+.qr-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.qr-content {
+  align-items: center;
+}
+
+.modal-content-qr {
+  background: #fff;
+  padding: 20px;
+  width: 350px;
+  border-radius: 10px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content-qr button {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #0d0686;
+  color: white;
+  transition: background-color 0.3s ease-in-out;
+  margin-top: 15px;
+}
+
+.modal-content-qr button:hover:not(:disabled) {
+  background: #0a045f;
+}
+
+.modal-content-qr button:disabled {
+  background: #666;
+  cursor: not-allowed;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .register-page {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .register-container {
+    width: 90%;
+    max-width: 90%;
+    margin-right: 0;
+    margin-bottom: 20px;
+    margin-left: 1px;
+  }
+
+  .logo-container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .logo-image {
+    max-width: 200px;
+  }
+
+  .row {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

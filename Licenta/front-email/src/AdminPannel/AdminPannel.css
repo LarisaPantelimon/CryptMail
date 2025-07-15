@@ -1,0 +1,575 @@
+/* Reset default margins and ensure full height */
+.adminPage {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #f5f5f5; /* Slightly off-white background for better contrast */
+    height: 100vh;
+    overflow-x: hidden;
+    display: flex; /* Ensure sidebar and main content layout works smoothly */
+}
+
+/* Sidebar Styles */
+.sidebar-admin {
+    width: 60px;
+    background-color: #0d0686;
+    transition: width 0.3s ease;
+    position: fixed;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.sidebar-admin.open {
+    width: 250px;
+}
+
+.sidebar-admin-header {
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.sidebar-admin-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar-admin-logo img {
+    width: 150px;
+    height: auto;
+    transition: width 0.3s ease;
+}
+
+.sidebar-admin:not(.open) .sidebar-admin-header {
+    padding: 15px 0;
+}
+
+.sidebar-admin:not(.open) .sidebar-admin-logo img {
+    width: 40px;
+}
+
+.sidebar-menu-admin {
+    list-style: none;
+    padding: 0;
+    margin-top: 40px;
+}
+
+.sidebar-menu-admin.closed {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar-info-admin {
+    height: 50px;
+    width: 100%;
+}
+
+.sidebar-button-admin {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 12px 15px;
+    color: white;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.sidebar-menu-admin.closed .sidebar-button-admin {
+    justify-content: center;
+    padding: 12px 0;
+    background-color: transparent;
+}
+
+.sidebar-button-admin:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.active-dash {
+    background-color: rgba(255, 255, 255, 0.2);
+    height: 50px;
+}
+
+.sidebar-button-admin.active {
+    background-color: none;
+}
+
+.sidebar-icon-admin {
+    margin-right: 12px;
+    font-size: 20px;
+    min-width: 20px;
+    text-align: center;
+}
+
+.sidebar-menu-admin.closed .sidebar-icon-admin {
+    margin-right: 0;
+}
+
+.sidebar-text-admin {
+    display: none;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.sidebar-admin.open .sidebar-text-admin {
+    display: inline;
+}
+
+/* Toggle Button */
+.toggle-btn {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1001;
+    color: white;
+    background-color: #0d0686;
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: left 0.3s ease, background-color 0.2s ease;
+    font-size: 14px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-btn:hover {
+    background-color: #1a17b3;
+}
+
+.main-content.open .toggle-btn {
+    left: 235px;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 60px;
+    transition: margin-left 0.3s ease;
+    padding: 40px;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    flex: 1; /* Ensure main content takes remaining space */
+}
+
+.main-content.open {
+    margin-left: 240px;
+}
+
+/* Stat Cards Container */
+.stat-cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+/* Stat Cards */
+.stat-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card i {
+    font-size: 36px;
+    color: #0d0686;
+    margin-right: 16px;
+}
+
+.stat-card div {
+    flex: 1;
+}
+
+.stat-card p:first-child {
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 6px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-card p:last-child {
+    font-size: 26px;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+/* Chart and Users Per Month Container */
+.chart-and-users-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+/* Chart Container */
+.chart-container {
+    background-color: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s ease;
+}
+
+.chart-container:hover {
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+}
+
+.chart-container canvas {
+    max-height: 260px;
+}
+
+/* Users Per Month List */
+.users-per-month {
+    background-color: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s ease;
+}
+
+.users-per-month:hover {
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+}
+
+.users-per-month p {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+.users-per-month ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.users-per-month li {
+    font-size: 14px;
+    color: #4b5563;
+    display: flex;
+    align-items: center;
+    padding: 4px 0;
+}
+
+.users-per-month li::before {
+    content: '•';
+    color: #0d0686;
+    font-size: 18px;
+    margin-right: 8px;
+}
+
+/* Tables Container */
+.tables-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+/* Tables */
+.list-container {
+    background-color: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s ease;
+}
+
+.list-container:hover {
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+}
+
+.list-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.list-container th, .list-container td {
+    padding: 12px 15px;
+    font-size: 13px;
+    color: #4b5563;
+    text-align: left;
+}
+
+.list-container th {
+    font-weight: 600;
+    color: #1f2937;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.list-container tr {
+    transition: background-color 0.2s ease;
+}
+
+.list-container tr:hover {
+    background-color: #f9fafb;
+}
+
+.list-container input {
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    color: #4b5563;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+}
+
+.list-container input::placeholder {
+    color: #9ca3af;
+}
+
+.list-container input:focus {
+    border-color: #0d0686;
+    box-shadow: 0 0 0 3px rgba(13, 6, 134, 0.1);
+}
+
+/* Buttons in Users Table */
+.list-container button {
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 5px;
+    padding: 6px 12px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.list-container button.text-red-500 {
+    background: none;
+    border: none;
+    color: #ef4444;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.list-container button.text-red-500:hover {
+    color: #dc2626;
+    transform: scale(1.1);
+}
+
+.list-container button.bg-green-500 {
+    background-color: #10b981;
+    color: white;
+    border: none;
+    cursor: pointer;
+    min-width: 70px;
+}
+
+.list-container button.bg-green-500:hover {
+    background-color: #059669;
+}
+
+
+.list-container button.bg-gray-500 {
+    background-color: #6b7280;
+    color: white;
+    border: none;
+    cursor: pointer;
+    min-width: 70px;
+}
+
+.list-container button.bg-gray-500:hover {
+    background-color: #4b5563;
+}
+
+/* Pagination Styles */
+.pagination {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: #4b5563;
+}
+
+.pagination button {
+    padding: 8px 14px;
+    background-color: #0d0686;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    font-weight: 500;
+    width: 90px;
+}
+
+.pagination button:hover:not(:disabled) {
+    background-color: #1a17b3;
+    transform: translateY(-2px);
+}
+
+.pagination button:disabled {
+    background-color: #e5e7eb;
+    color: #9ca3af;
+    cursor: not-allowed;
+}
+
+.pagination span {
+    font-weight: 500;
+    color: #1f2937;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .main-content {
+        padding: 24px;
+    }
+
+    .stat-cards-container,
+    .chart-and-users-container,
+    .tables-container {
+        grid-template-columns: 1fr;
+    }
+
+    .users-per-month ul {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card,
+    .chart-container,
+    .users-per-month,
+    .list-container {
+        margin-bottom: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar-admin {
+        width: 0;
+    }
+
+    .sidebar-admin.open {
+        width: 220px;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 16px;
+    }
+
+    .main-content.open {
+        margin-left: 0;
+    }
+
+    .toggle-btn {
+        left: 10px;
+    }
+
+    .main-content.open .toggle-btn {
+        left: 230px;
+    }
+
+    .stat-card {
+        padding: 16px;
+    }
+
+    .stat-card i {
+        font-size: 32px;
+        margin-right: 12px;
+    }
+
+    .stat-card p:last-child {
+        font-size: 22px;
+    }
+
+    .list-container th, .list-container td {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    .list-container input {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content {
+        padding: 12px;
+    }
+
+    .stat-card {
+        padding: 12px;
+    }
+
+    .stat-card i {
+        font-size: 28px;
+        margin-right: 10px;
+    }
+
+    .stat-card p:first-child {
+        font-size: 12px;
+    }
+
+    .stat-card p:last-child {
+        font-size: 20px;
+    }
+
+    .users-per-month p {
+        font-size: 14px;
+    }
+
+    .users-per-month li {
+        font-size: 13px;
+    }
+
+    .chart-container {
+        padding: 16px;
+    }
+
+    .list-container {
+        padding: 16px;
+    }
+
+    .list-container th, .list-container td {
+        padding: 8px;
+        font-size: 11px;
+    }
+
+    .list-container button {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+
+    .pagination {
+        gap: 8px;
+        font-size: 13px;
+    }
+
+    .pagination button {
+        padding: 6px 10px;
+    }
+}

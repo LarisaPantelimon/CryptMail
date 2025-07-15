@@ -1,0 +1,45 @@
+events {}
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+    sendfile        on;
+
+    # HTTP server - redirects all HTTP traffic to HTTPS
+    server {
+        listen 80;
+        server_name cryptmail.stud.fsisc.ro;
+        return 301 https://cryptmail.stud.fsisc.ro$request_uri;
+    }
+
+    # HTTPS server
+    server {
+        listen 443 ssl;
+        server_name cryptmail.stud.fsisc.ro;
+
+        ssl_certificate /etc/letsencrypt/live/cryptmail.stud.fsisc.ro/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/cryptmail.stud.fsisc.ro/privkey.pem;
+
+        client_max_body_size 250m;
+
+        # Location to serve the static HTML file
+        location /test_socketio.html {
+            root /usr/share/nginx/html; # This is Nginx's default static file directory
+            # No proxy_pass here, just serve the file
+        }
+
+        # This location proxies ALL other traffic to the backend for the WebSocket test
+        location / {
+            proxy_pass http://mobile-backend:6000;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+
+        # (Keep other commented-out location blocks as they were, or ensure they remain commented out)
+    }
+}
